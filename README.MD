@@ -18,4 +18,4 @@ Odoo 14 Simple Materials With Unit Test
 <img src="https://github.com/baguspam/custom-material/blob/main/screenshoot/website_bahans.png" height="300">
 
 ## Screenshoot Testing
-<img src="https://github.com/baguspam/custom-material/blob/main/screenshoot/unit_test_model.png" height="300">
+<img src="https://github.com/baguspam/custom-material/blob/main/screenshoot/unit_test_model.PNG" height="300">
