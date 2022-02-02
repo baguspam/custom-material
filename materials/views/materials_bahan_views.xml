@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- List View -->
+        <record model="ir.ui.view" id="materials_bahan_tree">
+            <field name="name">materials.bahan.tree</field>
+            <field name="model">materials.bahan</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="code"/>
+                    <field name="name"/>
+                    <field name="type"/>
+                    <field name="buy_price"/>
+                    <field name="supplier_id"/>
+                </tree>
+            </field>
+        </record>
+        
+        <!-- Form View -->
+        <record model="ir.ui.view" id="materials_bahan_form_view">
+            <field name="name">materials.bahan.form</field>
+            <field name="model">materials.bahan</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="code"/>
+                                <field name="name"/>
+                                <field name="type"/>
+                                <field name="buy_price"/>
+                                <field name="supplier_id"/>
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Filter -->
+         <record id="view_materials_bahan_filter" model="ir.ui.view">
+            <field name="name">materials.bahan.select</field>
+            <field name="model">materials.bahan</field>
+            <field name="arch" type="xml">
+                <search string="Search Type">
+                    <field name="name" string="Type"
+                           filter_domain="[('type', 'ilike', self)]"/>
+                    <filter name="type1" string="Type Fabric" domain="[('type', '=', 'fabric')]"/>
+                    <filter name="type2" string="Type Jeans" domain="[('type', '=', 'jeans')]"/>
+                    <filter name="type3" string="Type Cotton" domain="[('type', '=', 'Cotton')]"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Type" name="group_by_type" context="{'group_by':'type'}"/>
+                    </group>
+               </search>
+            </field>
+        </record>
+
+         <record id="materials_bahan_action_view" model="ir.actions.act_window">
+            <field name="name">Data Bahan</field>
+            <field name="res_model">materials.bahan</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_materials_bahan_filter"/>
+        </record>
+
+        <menuitem
+                id="materials_bahan_child_menu"
+                action="materials_bahan_action_view"
+                parent="materials_base_menu"
+                name="Data Bahans"
+                sequence="0"/>
+
+    </data>
+</odoo>

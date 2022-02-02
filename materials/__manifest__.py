@@ -1,0 +1,22 @@
+{
+  'name': 'Material ERD',
+  'author': 'Bagus Pambudi',
+  'version': '0.1',
+  'depends': ['base', 'website'],
+  'data': [
+    'security/ir.model.access.csv',
+    'views/_menu_item.xml',
+    'views/materials_bahan_views.xml',
+    'views/materials_supplier_views.xml',
+    'web_views/web_materials_views.xml',
+  ],
+  'sequence': 1,
+  'auto_install': False,
+  'installable': True,
+  'application': True,
+  'category': '- Geekz',
+  'summary': 'Catat Material',
+  'description': "Aplikasi Material Bahan dengan Unit Test, Rest Api, View Website dan in odoo 14",
+  'license': 'OPL-1',
+  'website': '',
+}

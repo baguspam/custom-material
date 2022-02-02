@@ -1,0 +1,113 @@
+<odoo>
+
+    <template id="website_materials_template" name="Materials Bahan">
+        <t t-call="website.layout">
+            <div class="oe_structure"/>
+            <div class="container pt20 pb64">
+                <nav class="navbar navbar-light bg-white navbar-expand-lg border py-0 mb-2 mt-3 rounded">          
+                    <ol class="breadcrumb mb-0 py-2 flex-grow-1 row bg-white">
+                        <li class="breadcrumb-item ml-1"><a href="../" aria-label="Home" title="Home"><i class="fa fa-home"></i></a></li>
+                        <li class="breadcrumb-item active ">
+                            Data Bahan
+                        </li>
+                    </ol>
+                    <div class="collapse navbar-collapse">
+                        <div class="nav flex-column flex-lg-row ml-auto p-0 mb-3 mb-lg-0 mt-1 mt-lg-0">
+                            <div class="form-inline">
+                                <span class="small mr-1 navbar-text">Filter Type By:</span>
+                                <div class="btn-group">
+                                    <button id="type_searchbar_filters" data-toggle="dropdown" class="btn btn-secondary btn-sm dropdown-toggle" aria-expanded="false">
+                                        All
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="type_searchbar_filters">
+                                            <a href="./bahans" class="dropdown-item active">
+                                                <span>All</span>
+                                            </a>
+                                            <a href="?typeby=jeans" class="dropdown-item">
+                                                <span>Jeans</span>
+                                            </a>
+                                            <a href="?typeby=fabric" class="dropdown-item">
+                                                <span>Fabric</span>
+                                            </a>
+                                            <a href="?typeby=cotton" class="dropdown-item">
+                                                <span>Cotton</span>
+                                            </a>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </nav>
+                <div class="table-responsive border rounded border-top-0">
+                    <table class="table rounded mb-0">
+                        <thead>
+                            <tr class="active">
+                                <th class="text-left">ID #</th>
+                                <th class="text-left">Nama Bahan</th>
+                                <th class="text-left">Tipe</th>
+                                <th class="text-left">Supplier</th>
+                                <th class="text-right">Harga</th>
+
+                            </tr>
+                        </thead>
+                        <t t-if="not bahans">
+                            <tr>
+                                <td colspan="5"><p>Data Kosong</p></td>
+                            </tr>
+                        </t>
+                        <t t-foreach="bahans" t-as="bahan">
+                            <tr>
+                                <td class="text-left"><span t-field="bahan.id"/></td>
+                                <td class="text-left"><span t-field="bahan.name"/></td>
+                                <td class="text-left"><span t-field="bahan.type"/></td>
+                                <td class="text-left"><span t-field="bahan.supplier_id"/></td>
+                                <td class="text-right">Rp. <span t-field="bahan.buy_price"/></td>
+                            </tr>
+                        </t>
+                    </table>
+                </div>
+                <br />
+                <div class="row text-center justify-content-center">
+                    <nav aria-label="Page Navigation">
+                        <ul class="pagination justify-content-center">
+                            <t t-if="prev_page_index">
+                                <li class="page-item">
+                                    <a class="page-link" 
+                                        href="#"
+                                        t-att-href="'{}page={}'.format(slug_param, prev_page_index)" 
+                                    >
+                                    Prev
+                                    </a>
+                                </li>
+                            </t>
+                            <t t-foreach="page_displays" t-as="page_index">
+                                <li 
+                                    t-att-class=" 'page-item active' if (page_index == page_number) else 'page-item'"
+                                >
+                                    <a class="page-link"
+                                    t-att-href="'{}page={}'.format(slug_param,page_index)" 
+                                    t-esc="'{}'.format(page_index)" 
+                                    >
+                                    </a>
+                                </li>
+                            </t>
+                            <t t-if="next_page_index">
+                                <li class="page-item">
+                                    <a class="page-link" 
+                                        href="#"
+                                        t-att-href="'{}page={}'.format(slug_param,next_page_index)" 
+                                    >
+                                    Next
+                                    </a>
+                                </li>
+                            </t>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </t>
+    </template>
+
+</odoo>
